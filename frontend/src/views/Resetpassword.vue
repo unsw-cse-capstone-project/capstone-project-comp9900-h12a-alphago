@@ -98,14 +98,7 @@ export default {
         callback();
       }
     };
-    const validateEmail = (rule, value, callback) => {
-      const emailReg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      if (!emailReg.test(value)) {
-        callback(new Error("Please enter the correct email address"));
-      } else {
-        callback();
-      }
-    };
+
     const validatePasswordAgain = (rule, value, callback) => {
       let password = this.form.password;
       console.log(password);
@@ -130,7 +123,7 @@ export default {
         username: [{required: true, message: "Please enter username", trigger: "blur",},{ validator: validateUsername, trigger: "blur" }],
         password: [{required: true, message: "Please enter new password", trigger: "blur",},{ validator: validatepswd, trigger: "blur" }],
         passwordAgain: [{required: true, message: "Please enter the password again", trigger: "blur",}, { validator: validatePasswordAgain, trigger: "blur" },],
-        validate: [{required: true, message: "Please enter validate code", trigger: "blur",},{ validator: validateEmail, trigger: "blur" }],
+        validate: [{required: true, message: "Please enter validate code", trigger: "blur",},],
       },
     };
   },
@@ -255,6 +248,7 @@ export default {
   /*height: 60%;*/
 }
   .btns-reset {
+    cursor: pointer;
     /*border:1px solid #333;*/
     margin:30% auto 0 auto;
     margin-top: 75px;

@@ -155,7 +155,8 @@ public class AuctionServiceImpl extends ServiceImpl<AuctionMapper, Auction> impl
         // delete auction
         auctionMapper.deleteById(aid);
         // change property auction status
-        propertyMapper.update(new Property().setAuction(false), new UpdateWrapper<Property>().eq("pid", pid));
+        propertyMapper.update(null, new UpdateWrapper<Property>().eq("pid", pid)
+        .set("auction", false));
     }
 
     /**
